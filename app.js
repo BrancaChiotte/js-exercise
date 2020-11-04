@@ -41,7 +41,7 @@ var positives = [];
 var failed = 0;
 var numberOfStudents = 0;
 
-function BuildPersonsObject() {
+function buildPersonsObject() {
    for(var i = 0; i < names.length; i++){
       persons.push({
          name: names[i],
@@ -56,29 +56,23 @@ function BuildPersonsObject() {
     }
   };
 
-  var negatives =[];
   for (var i = 0; i < persons.length; i++) {
     if (persons[i].grade < 10) {
-        negatives.push(persons[i].name);
-        failed = negatives.length;
+      failed++
     }
   };
 
-  var namesWithA =[];
   for (var i = 0; i < persons.length; i++) {
     if (persons[i].name[0] === "A") {
-        namesWithA.push(persons[i].name);
-        numberOfStudents = namesWithA.length;
+      numberOfStudents++
     }
   };
-
 };
 
-BuildPersonsObject();
+buildPersonsObject();
 console.log(positives);
 console.log(failed);
 console.log(numberOfStudents);
-
 
 // --------------------------- exercise 5 to 6 ------
 // 5 - Create a new function that receives, a name and a grade in a argument,
@@ -89,24 +83,24 @@ console.log(numberOfStudents);
     // - NAME had GRADE, so It is a good result – 13 to 16 (16 doesn’t count)
     // - NAME had GRADE, so It is a very good result – 16 to 18 (18 doesn’t count)
     // - NAME had GRADE, so It is a excellent result – 18 to 20
-function messageFunc (name, grade) {
+function gradesFunc (name, grade) {
 
   if (grade < 10) {
     return  '- ' + name + ' had ' + grade + ", so It was a negative result";
   }
-  else if ( grade >= 10 && grade < 13  ) {
+  else if (grade < 13 ) {
     return  '- ' + name + ' had ' + grade + ", so It is a ok result";
 
   }
-  else if (grade >= 13 && grade < 16 ) {
+  else if (grade < 16) {
     return  '- ' + name + ' had ' + grade + ", so It is a good result";
 
   }
-  else if (grade >= 16 && grade < 18) {
+  else if (grade < 18) {
     return  '- ' + name + ' had ' + grade + ", so It is a very good result";
 
   }
-  else if (grade >= 18 && grade <= 20 ) {
+  else if (grade <= 20) {
     return  '- ' + name + ' had ' + grade + ", so It was a excellent result";
 
   }
@@ -114,4 +108,4 @@ function messageFunc (name, grade) {
 }
 
 // 6 - Call this previous function with a name of your choice, and a random grade between 0 and 20
-messageFunc('Branca', Math.floor(Math.random() * 21));
+gradesFunc('Branca', Math.floor(Math.random() * 21));
